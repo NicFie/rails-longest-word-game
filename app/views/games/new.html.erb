@@ -1,9 +1,24 @@
-<h1>New game</h1>
-<%= @letters %>
 
-<form action="score" method="POST" data-turbo="false">
-  <input type="text" name="word" id="word">
-  <input type="submit" value="Guess">
-  <%= hidden_field_tag 'letters', @letters %>
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-</form>
+<div class="container">
+  <h1 class="text-center">New game</h1>
+
+  <ul class="m-4 text-center">
+    <% @letters.each do |letter| %>
+      <li class="shadow"><%= letter %></li>
+    <%end%>
+  </ul>
+  <div class="word-input container">
+    <p>What is the longest word you can find?</p>
+
+    <form action="score" method="POST" data-turbo="false">
+      <div class="input-group mb-3">
+        <input class="form-control" type="text" name="word" id="word">
+        <input class="btn btn-outline-secondary" type="submit" value="Play">
+      </div>
+      <%= hidden_field_tag 'letters', @letters %>
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    </form>
+  </div>
+
+
+</div>
