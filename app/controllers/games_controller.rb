@@ -5,6 +5,7 @@ class GamesController < ApplicationController
   ALPHABET = ('A'..'Z').to_a
 
   def new
+    @start = Time.now
     @letters = []
     10.times do
       @letters << ALPHABET.sample
@@ -12,12 +13,18 @@ class GamesController < ApplicationController
   end
 
   def score
+    @start = params[:start].to_datetime
+    @end = Time.now
+    @time_taken = @end - @start
     @letters = params[:letters].split(' ')
     @word = params[:word]
+    @score = @word.length / @time_taken * 10
     @message = "Congratulations! #{@word.upcase} is a valid English word!"
     if !first_check(@word)
+      @score = 0
       @message = "Sorry, but #{@word.upcase} does not seem to be a valid English word"
     elsif !second_check(@word, @letters)
+      @score = 0
       @message = "Sorry, but #{@word.upcase} can't be built out of #{params[:letters]}"
     end
   end
