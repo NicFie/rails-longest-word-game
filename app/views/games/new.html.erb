@@ -1,0 +1,9 @@
+<h1>New game</h1>
+<%= @letters %>
+
+<form action="score" method="POST" data-turbo="false">
+  <input type="text" name="word" id="word">
+  <input type="submit" value="Guess">
+  <%= hidden_field_tag 'letters', @letters %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+</form>
