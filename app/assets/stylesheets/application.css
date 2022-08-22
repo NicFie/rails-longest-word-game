@@ -33,3 +33,16 @@
  .word-input {
   width: 500px;
  }
+
+ .link {
+  text-decoration: none !important;
+ }
+
+ .results-container {
+  width: 500px;
+ }
+
+ .button-container {
+  display: flex;
+  justify-content: center;
+ }

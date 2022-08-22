@@ -1,3 +1,8 @@
-<h1>score</h1>
-<%= @message %>
-<%= link_to 'Play again', '/new' %>
+
+<div class="container mt-5 results-container">
+  <h1 class="mb-4 text-center">Result</h1>
+  <p class="text-center"><%= @message%></p>
+  <div class="text-center button-container">
+    <%= link_to 'Play again', '/new', class: "d-block link text-center btn btn-primary w-25" %>
+  </div>
+</div>
